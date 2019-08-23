@@ -14,6 +14,9 @@ class Stack:
         def getPrev(self):
             return self.__prev
         
+        def getNext(self):
+            self.__next
+
     def __init__(self):
         self.__head = None
         self.__tail = None
@@ -38,16 +41,24 @@ class Stack:
             current = self.__tail.getData()
             prev = self.__tail.getPrev()
             prev and prev.setNext(None)
+            self.__tail = prev
             self.__size = self.__size - 1
             return current
             
     def __str__(self):
-        string = '['
-        while not self.isEmpty():
-            string = string + str(self.pop())
-            if self.size() > 0:
-                string = string + ', '
-        return (string + ']')
+        a = self.__head
+        string = ''
+        while a:
+            string = string + str(a.getData())
+            a = a.getNext()
+        return string;
+    # def __str__(self):
+    #     string = '['
+    #     while not self.isEmpty():
+    #         string = string + str(self.pop())
+    #         if self.size() > 0:
+    #             string = string + ', '
+    #     return (string + ']')
             
 
     def isEmpty(self):
