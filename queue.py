@@ -1,4 +1,4 @@
-class Stack:
+class Queue:
     class Node:
         def __init__(self, data, prev = None, next = None):
             self.__prev = prev
@@ -26,7 +26,7 @@ class Stack:
         return self.__size
 
     def push(self, element):
-        n = Stack.Node(element, self.__tail)
+        n = Queue.Node(element, self.__tail)
         self.__size = self.__size + 1
         if self.__head == None:
             self.__head = n
@@ -38,27 +38,24 @@ class Stack:
         if self.__size == 0:
             return None
         else:
-            current = self.__tail.getData()
-            prev = self.__tail.getPrev()
-            prev and prev.setNext(None)
-            self.__tail = prev
+            current = self.__head.getData()
+            self.__head = self.__head.getNext()
             self.__size = self.__size - 1
-            return current
-            
-    def __str__(self):
-        a = self.__head
-        string = ''
-        while a:
-            string = string + str(a.getData())
-            a = a.getNext()
-        return string;
+            return current            
     # def __str__(self):
-    #     string = '['
-    #     while not self.isEmpty():
-    #         string = string + str(self.pop())
-    #         if self.size() > 0:
-    #             string = string + ', '
-    #     return (string + ']')
+    #     a = self.__head
+    #     string = ''
+    #     while a:
+    #         string = string + str(a.getData())
+    #         a = a.getNext()
+    #     return string;
+    def __str__(self):
+        string = '['
+        while not self.isEmpty():
+            string = string + str(self.pop())
+            if self.size() > 0:
+                string = string + ', '
+        return (string + ']')
             
 
     def isEmpty(self):

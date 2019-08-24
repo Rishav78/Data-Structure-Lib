@@ -54,9 +54,6 @@ class Tree:
             print(root.getElement())
             Tree.__print(root.getLeft())
             Tree.__print(root.getRight())
-
-    def printTree(self):
-        Tree.__print(self.__root)
     
     @staticmethod
     def __remove(value, prev, root):
